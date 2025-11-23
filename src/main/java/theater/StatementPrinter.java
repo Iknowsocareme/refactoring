@@ -30,11 +30,11 @@ public class StatementPrinter {
             result.append(
                     String.format("  %s: %s (%s seats)%n",
                             getPlay(p).getName(),
-                            used(getAmount(p)),
+                            usd(getAmount(p)),
                             p.getAudience()));
         }
 
-        result.append(String.format("Amount owed is %s%n", used(getTotalAmount())));
+        result.append(String.format("Amount owed is %s%n", usd(getTotalAmount())));
         result.append(String.format("You earned %s credits%n", getTotalVolumeCredits()));
         return result.toString();
     }
@@ -57,7 +57,7 @@ public class StatementPrinter {
         return volumeCredits;
     }
 
-    private String used(int amount) {
+    private String usd(int amount) {
         return NumberFormat.getCurrencyInstance(Locale.US)
                 .format(amount / Constants.PERCENT_FACTOR);
     }
